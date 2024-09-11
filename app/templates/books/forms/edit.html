@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block main %}
+<div class="alert alert-success m-5" role="alert">
+  <h1 style="text-align: center"> Edit book _forms_ </h1>
+</div>
+  
+
+      {{ render_form(form) }}
+
+
+      <a href="{{ url_for('books.index') }}" class="btn btn-secondary my-2">Cancel</a>
+{% endblock %}

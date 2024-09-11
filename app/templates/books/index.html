@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="alert alert-primary m-5" role="alert">
+    <h1>All books</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-3 mb-2 d-flex align-items-stretch"> <!-- Keeps all cards the same height -->
+            <div class="card" style="width: 18rem; height: 24rem;"> <!-- Fixed card size -->
+                <img src="{{ book.image_url }}" class="card-img-top" alt="{{ book.title }}" style="height: 200px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text"><strong>ID:</strong> {{ book.id }}</p>
+                </div>
+                <div class="card-footer mt-auto"> <!-- Moves the footer to the bottom -->
+                    <a href="{{ url_for('books.show', id=book.id) }}" class="btn btn-primary">Show</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

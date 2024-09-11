@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="alert alert-primary" role="alert">
+    <h1>title of book - {{ book.title }}</h1>
+  </div>
+    
+  <div class="container d-flex justify-content-center">
+    <div class="card text-center">
+        <div class="card-header">
+            Book Details
+        </div>
+        <img style="width:700px; height:300px;" src="{{ book.image_url }}" class="card-img-top" alt="{{ book.title }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <p class="card-text"><strong>Number of Pages:</strong> {{ book.num_of_pages }}</p>
+            <p class="card-text"><strong>Description:</strong> {{ book.description }}</p>
+            
+        </div>
+        <div class="card-footer text-muted d-flex justify-content-center gap-2">
+            <a class="btn btn-primary" href="{{ url_for('books.form_edit', book_id=book.id) }}">Edit book</a>
+
+                
+                <form action="{{ url_for('books.delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                    <button type="submit" class="btn btn-danger">Delete book</button>
+                </form>
+            
+            
+        </div>
+        <div class="card-footer text-muted">
+            <a href="{{ url_for('books.index') }}" class="btn btn-secondary">Back to all books</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
